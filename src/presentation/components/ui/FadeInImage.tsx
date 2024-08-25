@@ -21,12 +21,13 @@ export const FadeInImage = ({uri, style}: Props) => {
 
   useEffect(() => {
     return () => {
-      isDisposed.current=true
+      isDisposed.current = true;
     }
+    
   }, []);
 
   const onLoadEnd = () => {
-    if(isDisposed) return;
+    if (isDisposed.current) return;
     fadeIn({});
     setIsLoading(false);
   }

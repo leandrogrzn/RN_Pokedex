@@ -9,7 +9,7 @@ interface Props {
 
 export const PokemonCard = ({pokemon}: Props) => {
   return (
-    <Card style={[ styles.cardContainer, ]}>
+    <Card style={[ styles.cardContainer, {backgroundColor: pokemon.color}]}>
       <Text style={styles.name} variant="bodyLarge" lineBreakMode="middle">
         {pokemon.name}
         {'\n#' + pokemon.id }
@@ -25,7 +25,7 @@ export const PokemonCard = ({pokemon}: Props) => {
 
       {/* pokemon image */}
       <FadeInImage
-        uri={pokemon.avatar}
+        uri={ pokemon.avatar }
         style={ styles.pokemonImage }
       />
 

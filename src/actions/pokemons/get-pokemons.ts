@@ -8,7 +8,7 @@ export const getPokemons = async (page: number, limit: number = 20): Promise<Pok
 
   try {
 
-    const url = `/pokemon?offset=${ page * 10 }&limit=${ limit }`;
+    const url = `/pokemon?offset=${ page * 20 }&limit=${ limit }`;
     const { data } = await pokeApi.get<PokeAPIPaginatedResponse>(url)
 
     const pokemonPromises = data.results.map( (info) => {
@@ -16,10 +16,10 @@ export const getPokemons = async (page: number, limit: number = 20): Promise<Pok
     } )
 
     const pokeApiPokemons = await Promise.all(pokemonPromises)
-    const pokemons = pokeApiPokemons.map( (item) => PokemonMapper.pokeApiPokemonToEntity(item.data))
+    const pokemonsPromises = pokeApiPokemons.map( (item) => PokemonMapper.pokeApiPokemonToEntity(item.data))
 
 
-    return pokemons;
+    return await Promise.all(pokemonsPromises);
     
   } catch (error) {
     throw new Error('Error getting polemons');
