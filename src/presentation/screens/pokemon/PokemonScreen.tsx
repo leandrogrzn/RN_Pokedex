@@ -4,12 +4,13 @@ import { RootStackParams } from "../../navigator/StackNavigator";
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonById } from "../../../actions/pokemons";
 import { FullScreenLoader } from "../../components/ui/FullScreenLoader";
-import { Chip, Text } from "react-native-paper";
+import { Chip, FAB, Text } from "react-native-paper";
 import { Formatter } from "../../../config/helpers/formatter";
 import { FadeInImage } from "../../components/ui/FadeInImage";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useContext } from "react";
 import { thmemeContext } from "../../context/ThemeContext";
+import { globalTheme } from "../../../config/theme/global-theme";
 
 interface Props extends StackScreenProps<RootStackParams, 'PokemonScreen'> {}
 
